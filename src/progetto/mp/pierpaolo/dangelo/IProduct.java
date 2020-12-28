@@ -1,4 +1,4 @@
-package progetto.mp.nome.cognome;
+package progetto.mp.pierpaolo.dangelo;
 
 public interface IProduct {
 	
