@@ -28,7 +28,7 @@ public class ProductsKit implements IProduct {
 
 	@Override
 	public double getPrice() {
-		return products.stream().mapToDouble(p -> p.getPrice()).sum();
+		return products.stream().mapToDouble(IProduct::getPrice).sum();
 	}
 
 }
