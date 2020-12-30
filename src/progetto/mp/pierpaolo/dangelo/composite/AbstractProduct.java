@@ -1,8 +1,8 @@
 package progetto.mp.pierpaolo.dangelo.composite;
-
+import progetto.mp.pierpaolo.dangelo.observer.AbstractSubject;
 import progetto.mp.pierpaolo.dangelo.visitor.ProductVisitor;
 
-public abstract class AbstractProduct {
+public abstract class AbstractProduct extends AbstractSubject {
 
 	private int code;
 	private String name;

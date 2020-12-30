@@ -20,6 +20,7 @@ public class BaseProduct extends AbstractProduct {
 	
 	public void setPrice(double price) {
 		this.price = price;
+		notifyObservers();
 	}
 
 	public ProductType getType() {
