@@ -17,7 +17,7 @@ public class BaseProduct extends AbstractProduct {
 	public double getPrice() {
 		return price;
 	}
-	
+
 	public void setPrice(double price) {
 		this.price = price;
 		notifyObservers();
@@ -26,10 +26,14 @@ public class BaseProduct extends AbstractProduct {
 	public ProductType getType() {
 		return type;
 	}
-	
+
 	@Override
 	public void accept(ProductVisitor visitor) {
 		visitor.visit(this);
 	}
 
+	@Override
+	public String toString() {
+		return "Code: " + getCode() + "Name: " + getName();
+	}
 }

@@ -46,4 +46,8 @@ public class KitProduct extends AbstractProduct {
 		visitor.visit(this);
 	}
 
+	@Override
+	public String toString() {
+		return "KitProduct: " + getName() + "Products: " + products;
+	}
 }
