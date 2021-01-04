@@ -6,24 +6,21 @@ import java.util.List;
 
 public abstract class AbstractSubject {
 
+  private List<IObserver> observers = new ArrayList<>();
 
-	private List<IObserver> observers = new ArrayList<>();
+  public void addIObserver(IObserver observer) {
+    observers.add(observer);
+  }
 
-	
-	public void addIObserver(IObserver observer) {
-		observers.add(observer);
-	}
-	
-	public void addAllIObserver(Iterator<IObserver> observers) {
-		observers.forEachRemaining(this::addIObserver);
-	}
-	
-	public void removeIObserver(IObserver observer) {
-		observers.remove(observer);
-	}
-	
-	public void notifyObservers() {
-		observers.forEach(IObserver::update);
-	}
+  public void addAllIObserver(Iterator<IObserver> observers) {
+    observers.forEachRemaining(this::addIObserver);
+  }
 
+  public void removeIObserver(IObserver observer) {
+    observers.remove(observer);
+  }
+
+  public void notifyObservers() {
+    observers.forEach(IObserver::update);
+  }
 }

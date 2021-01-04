@@ -4,7 +4,7 @@ import progetto.mp.pierpaolo.dangelo.composite.BaseProduct;
 import progetto.mp.pierpaolo.dangelo.composite.KitProduct;
 
 public interface ProductVisitor {
-	void visit(BaseProduct product);
+  void visit(BaseProduct product);
 
-	void visit(KitProduct productskit);
+  void visit(KitProduct productskit);
 }

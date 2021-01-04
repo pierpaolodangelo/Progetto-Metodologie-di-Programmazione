@@ -6,32 +6,32 @@ import progetto.mp.pierpaolo.dangelo.composite.ProductType;
 
 public class HiLoPriceVisitor implements ProductVisitor {
 
-	private double maxPrice = -Double.MAX_VALUE;
-	private double minPrice = Double.MAX_VALUE;
-	private ProductType type;
-	
-	public HiLoPriceVisitor(ProductType type) {
-		this.type = type;
-	}
+  private double maxPrice = -Double.MAX_VALUE;
+  private double minPrice = Double.MAX_VALUE;
+  private ProductType type;
 
-	@Override
-	public void visit(BaseProduct product) {
-		if (product.getType() == type) {
-			maxPrice = Math.max(product.getPrice(), maxPrice);
-			minPrice = Math.min(product.getPrice(), minPrice);
-		}
-	}
+  public HiLoPriceVisitor(ProductType type) {
+    this.type = type;
+  }
 
-	@Override
-	public void visit(KitProduct productskit) {
-		productskit.getProducts().forEachRemaining(d -> d.accept(this));
-	}
+  @Override
+  public void visit(BaseProduct product) {
+    if (product.getType() == type) {
+      maxPrice = Math.max(product.getPrice(), maxPrice);
+      minPrice = Math.min(product.getPrice(), minPrice);
+    }
+  }
 
-	public double getMaxPrice() {
-		return maxPrice;
-	}
+  @Override
+  public void visit(KitProduct productskit) {
+    productskit.getProducts().forEachRemaining(d -> d.accept(this));
+  }
 
-	public double getMinPrice() {
-		return minPrice;
-	}
+  public double getMaxPrice() {
+    return maxPrice;
+  }
+
+  public double getMinPrice() {
+    return minPrice;
+  }
 }

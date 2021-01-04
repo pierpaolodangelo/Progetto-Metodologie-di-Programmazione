@@ -4,36 +4,32 @@ import progetto.mp.pierpaolo.dangelo.visitor.ProductVisitor;
 
 public class BaseProduct extends AbstractProduct {
 
-	private double price;
-	private ProductType type;
+  private double price;
+  private ProductType type;
 
-	public BaseProduct(int code, String name, ProductType type, double price) {
-		super(code, name);
-		this.price = price;
-		this.type = type;
-	}
+  public BaseProduct(int code, String name, ProductType type, double price) {
+    super(code, name);
+    this.price = price;
+    this.type = type;
+  }
 
-	@Override
-	public double getPrice() {
-		return price;
-	}
+  @Override
+  public double getPrice() {
+    return price;
+  }
 
-	public void setPrice(double price) {
-		this.price = price;
-		notifyObservers();
-	}
+  public void setPrice(double price) {
+    this.price = price;
+    notifyObservers();
+  }
 
-	public ProductType getType() {
-		return type;
-	}
+  public ProductType getType() {
+    return type;
+  }
 
-	@Override
-	public void accept(ProductVisitor visitor) {
-		visitor.visit(this);
-	}
+  @Override
+  public void accept(ProductVisitor visitor) {
+    visitor.visit(this);
+  }
 
-	@Override
-	public String toString() {
-		return "Code: " + getCode() + "Name: " + getName();
-	}
 }
