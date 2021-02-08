@@ -1,7 +1,5 @@
 package progetto.mp.pierpaolo.dangelo.visitor;
 
-import static org.junit.Assert.*;
-
 import org.junit.Before;
 
 import static org.assertj.core.api.Assertions.*;
@@ -45,7 +43,7 @@ public class DiscountProductVisitorTest {
     discount = visitor.getDiscountStrategy().applyDiscount(50);
     assertThat(discount).isEqualTo(45.00);
   }
-  
+
   @Test
   public void noDiscount() {
     visitor =
@@ -55,6 +53,4 @@ public class DiscountProductVisitorTest {
     discount = visitor.getDiscountStrategy().applyDiscount(50);
     assertThat(discount).isEqualTo(50.00);
   }
-  
-  
 }

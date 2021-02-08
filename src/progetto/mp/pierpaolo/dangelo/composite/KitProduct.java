@@ -30,10 +30,21 @@ public class KitProduct extends AbstractProduct {
 
   public void addProduct(AbstractProduct product) {
     products.add(product);
+    notifyObservers();
   }
 
   public void addAllProducts(Iterator<AbstractProduct> products) {
     products.forEachRemaining(this::addProduct);
+  }
+
+  public void removeProduct(AbstractProduct product) {
+    if (products.remove(product)) {
+      notifyObservers();
+    }
+  }
+
+  public void removeAllProducts(Iterator<AbstractProduct> products) {
+    products.forEachRemaining(this::removeProduct);
   }
 
   @Override
@@ -45,5 +56,4 @@ public class KitProduct extends AbstractProduct {
   public void accept(ProductVisitor visitor) {
     visitor.visit(this);
   }
-
 }

@@ -27,7 +27,7 @@ public class PriceMonitorObserver implements IObserver {
 
   private void updateAverage(double currentPrice) {
     avaragePrice = (counter * avaragePrice + currentPrice) / ++counter;
-   }
+  }
 
   public double getLowestPrice() {
     return lowestPrice;
