@@ -18,6 +18,8 @@ public class TypeCounterObserver implements IObserver {
 
   @Override
   public void update() {
+    // TODO da rivedere
+    visitor.setCounter(0);
     kitProduct.accept(visitor);
   }
 

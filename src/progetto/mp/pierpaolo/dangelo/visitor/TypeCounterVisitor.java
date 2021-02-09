@@ -7,6 +7,7 @@ import progetto.mp.pierpaolo.dangelo.composite.ProductType;
 public class TypeCounterVisitor implements ProductVisitor {
 
   private int counter;
+
   private ProductType productType;
 
   public TypeCounterVisitor(ProductType productType) {
@@ -28,5 +29,9 @@ public class TypeCounterVisitor implements ProductVisitor {
 
   public int getCounter() {
     return counter;
+  }
+
+  public void setCounter(int counter) {
+    this.counter = counter;
   }
 }
