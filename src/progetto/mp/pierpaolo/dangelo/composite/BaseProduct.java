@@ -31,5 +31,4 @@ public class BaseProduct extends AbstractProduct {
   public void accept(ProductVisitor visitor) {
     visitor.visit(this);
   }
-
 }

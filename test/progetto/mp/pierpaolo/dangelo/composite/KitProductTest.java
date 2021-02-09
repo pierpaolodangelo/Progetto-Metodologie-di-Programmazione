@@ -56,4 +56,24 @@ public class KitProductTest {
     kitproduct.addAllProducts(products.iterator());
     assertThat(kitproduct.getProducts()).toIterable().containsExactlyElementsOf(products);
   }
+
+  @Test
+  public void removeProductTest() {
+    KitProduct kitproduct = new KitProduct(0, "Kit1");
+    BaseProduct product = new BaseProduct(1, "Prodotto1", ProductType.TYPE1, 5.00);
+    kitproduct.addProduct(product);
+    kitproduct.removeProduct(product);
+    assertThat(kitproduct.getProducts()).toIterable().doesNotContain(product);
+  }
+
+  @Test
+  public void removeAllProductTest() {
+    KitProduct kitproduct = new KitProduct(0, "Kit1");
+    List<AbstractProduct> products = new ArrayList<>();
+    products.add(new BaseProduct(4, "Prodotto3", ProductType.TYPE1, 5.00));
+    products.add(new BaseProduct(5, "Prodotto4", ProductType.TYPE1, 10.00));
+    kitproduct.addAllProducts(products.iterator());
+    kitproduct.removeAllProducts(products.iterator());
+    assertThat(kitproduct.getProducts()).toIterable().doesNotContainAnyElementsOf(products);
+  }
 }
