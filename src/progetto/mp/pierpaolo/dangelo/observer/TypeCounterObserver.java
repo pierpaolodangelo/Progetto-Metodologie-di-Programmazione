@@ -1,29 +1,38 @@
 package progetto.mp.pierpaolo.dangelo.observer;
 
-import progetto.mp.pierpaolo.dangelo.composite.KitProduct;
+import java.util.ArrayList;
+import java.util.List;
+
+import progetto.mp.pierpaolo.dangelo.composite.AbstractProduct;
 import progetto.mp.pierpaolo.dangelo.composite.ProductType;
 import progetto.mp.pierpaolo.dangelo.visitor.TypeCounterVisitor;
 
 public class TypeCounterObserver implements IObserver {
 
-  private TypeCounterVisitor visitor;
-  private KitProduct kitProduct;
+  private ProductType productType;
+  private int counter = -1;
+  private AbstractProduct product;
+  private List<Integer> storico;
 
-  public TypeCounterObserver(ProductType productType, KitProduct kitProduct) {
-    visitor = new TypeCounterVisitor(productType);
-    this.kitProduct = kitProduct;
+  public TypeCounterObserver(ProductType productType, AbstractProduct product) {
+    this.storico = new ArrayList<Integer>();
+    this.product = product;
+    this.productType = productType;
+    product.addIObserver(this);
     update();
-    kitProduct.addIObserver(this);
   }
 
   @Override
   public void update() {
-    // TODO da rivedere
-    visitor.setCounter(0);
-    kitProduct.accept(visitor);
+    TypeCounterVisitor visitor = new TypeCounterVisitor(productType);
+    product.accept(visitor);
+    if (visitor.getCounter() != counter) {
+      counter = visitor.getCounter();
+      storico.add(counter);
+    }
   }
 
-  public int getNumProduct() {
-    return visitor.getCounter();
+  public List<Integer> getStorico() {
+    return storico;
   }
 }

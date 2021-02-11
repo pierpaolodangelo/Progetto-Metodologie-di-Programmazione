@@ -1,5 +1,7 @@
 package progetto.mp.pierpaolo.dangelo.composite;
 
+import java.util.Iterator;
+
 import progetto.mp.pierpaolo.dangelo.visitor.ProductVisitor;
 
 public class BaseProduct extends AbstractProduct {
@@ -30,5 +32,20 @@ public class BaseProduct extends AbstractProduct {
   @Override
   public void accept(ProductVisitor visitor) {
     visitor.visit(this);
+  }
+
+  @Override
+  public Iterator<AbstractProduct> getProducts() {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public void addProduct(AbstractProduct product) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public void removeProduct(AbstractProduct product) {
+    throw new UnsupportedOperationException();
   }
 }

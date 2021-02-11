@@ -20,7 +20,7 @@ public class TypeCounterObserverTest {
             0,
             "Kit1",
             new BaseProduct(1, "Prodotto1", ProductType.TYPE1, 5.00),
-            new BaseProduct(2, "Prodotto2", ProductType.TYPE1, 10.00),
+            new BaseProduct(2, "Prodotto2", ProductType.TYPE2, 10.00),
             new KitProduct(
                 3,
                 "Kit2",
@@ -32,18 +32,21 @@ public class TypeCounterObserverTest {
 
   @Test
   public void observerInitializationTest() {
-    assertThat(observer.getNumProduct()).isEqualTo(4);
+    assertThat(observer.getStorico()).hasSize(1).contains(3, atIndex(0));
   }
 
   @Test
-  public void observerOnAddTest() {
-    kitproduct.addProduct(new BaseProduct(1, "Prodotto1", ProductType.TYPE1, 5.00));
-    assertThat(observer.getNumProduct()).isEqualTo(5);
+  public void addProductTest() {
+    int previousSize = observer.getStorico().size();
+    kitproduct.addProduct(new BaseProduct(2, "Prodotto2", ProductType.TYPE1, 10.00));
+    assertThat(observer.getStorico()).hasSize(previousSize + 1).contains(4, atIndex(1));
   }
-  
+
   @Test
-  public void observerOnRemoveTest() {
-    kitproduct.removeProduct(new BaseProduct(1, "Prodotto1", ProductType.TYPE1, 5.00));
-    assertThat(observer.getNumProduct()).isEqualTo(4);
+  public void addProductWrongTypeTest() {
+    int currentSize = observer.getStorico().size();
+    kitproduct.addProduct(new BaseProduct(2, "Prodotto2", ProductType.TYPE2, 10.00));
+    assertThat(observer.getStorico()).hasSize(currentSize);
   }
+
 }

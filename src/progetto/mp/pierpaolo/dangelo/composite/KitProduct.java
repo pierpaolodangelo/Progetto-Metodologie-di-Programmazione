@@ -24,27 +24,22 @@ public class KitProduct extends AbstractProduct {
     this.products = new ArrayList<>(Arrays.asList(products));
   }
 
+  @Override
   public Iterator<AbstractProduct> getProducts() {
     return products.iterator();
   }
 
+  @Override
   public void addProduct(AbstractProduct product) {
     products.add(product);
     notifyObservers();
   }
 
-  public void addAllProducts(Iterator<AbstractProduct> products) {
-    products.forEachRemaining(this::addProduct);
-  }
-
+  @Override
   public void removeProduct(AbstractProduct product) {
     if (products.remove(product)) {
       notifyObservers();
     }
-  }
-
-  public void removeAllProducts(Iterator<AbstractProduct> products) {
-    products.forEachRemaining(this::removeProduct);
   }
 
   @Override
