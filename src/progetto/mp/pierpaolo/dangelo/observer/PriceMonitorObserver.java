@@ -4,25 +4,37 @@ import progetto.mp.pierpaolo.dangelo.composite.AbstractProduct;
 
 public class PriceMonitorObserver implements IObserver {
 
+  private static final double PRECISIONE_DI_MACCHINA = Math.pow(2, -53);
+
   private AbstractProduct product;
+  private double currentPrice;
   private double lowestPrice;
   private double highestPrice;
   private double avaragePrice;
   private int counter;
+  private double tolerance;
 
   public PriceMonitorObserver(AbstractProduct product) {
+    this(product, PRECISIONE_DI_MACCHINA);
+  }
+
+  public PriceMonitorObserver(AbstractProduct product, double tolerance) {
     this.product = product;
+    this.currentPrice = product.getPrice();
     this.lowestPrice = product.getPrice();
     this.highestPrice = product.getPrice();
+    this.tolerance = tolerance;
     updateAverage(product.getPrice());
     product.addIObserver(this);
   }
 
   @Override
   public void update() {
-    this.lowestPrice = Math.min(product.getPrice(), this.lowestPrice);
-    this.highestPrice = Math.max(product.getPrice(), this.highestPrice);
-    updateAverage(product.getPrice());
+    if (Math.abs(currentPrice - product.getPrice()) > tolerance) {
+      this.lowestPrice = Math.min(product.getPrice(), this.lowestPrice);
+      this.highestPrice = Math.max(product.getPrice(), this.highestPrice);
+      updateAverage(product.getPrice());
+    }
   }
 
   private void updateAverage(double currentPrice) {
