@@ -47,7 +47,7 @@ public class PriceMonitorObserver extends AbstractProductObserver {
     return highestPrice;
   }
 
-  public double getAvaragePrice() {
+  public double getAveragePrice() {
     return avaragePrice;
   }
 }

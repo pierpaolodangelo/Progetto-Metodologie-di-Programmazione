@@ -19,7 +19,7 @@ public class DiscountStrategyTest {
 
   @Test
   public void absoluteDiscountTestAbsGrtPrice() {
-	  assertThat(DiscountStrategyFactory.newAbsoluteDiscount(120).applyDiscount(PRICE)).isEqualTo(0);
+    assertThat(DiscountStrategyFactory.newAbsoluteDiscount(120).applyDiscount(PRICE)).isEqualTo(0);
   }
 
   @Test
@@ -40,10 +40,11 @@ public class DiscountStrategyTest {
             () -> DiscountStrategyFactory.newPercentageDiscount(120).applyDiscount(PRICE))
         .isInstanceOf(IllegalArgumentException.class);
   }
+
   @Test
   public void percentageSanityCheckTestPercentageLessZero() {
-	    assertThatThrownBy(
-	            () -> DiscountStrategyFactory.newPercentageDiscount(-10).applyDiscount(PRICE))
-	        .isInstanceOf(IllegalArgumentException.class);
-	  }
+    assertThatThrownBy(
+            () -> DiscountStrategyFactory.newPercentageDiscount(-10).applyDiscount(PRICE))
+        .isInstanceOf(IllegalArgumentException.class);
+  }
 }

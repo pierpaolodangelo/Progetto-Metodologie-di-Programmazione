@@ -12,7 +12,8 @@ public class DiscountProductVisitor implements ProductVisitor {
   private ProductType type;
   private DiscountStrategy discountStrategy;
 
-  public DiscountProductVisitor(int numProduct, ProductType type, DiscountStrategy discountStrategy) {
+  public DiscountProductVisitor(
+      int numProduct, ProductType type, DiscountStrategy discountStrategy) {
     this.numProduct = numProduct;
     this.type = type;
     this.discountStrategy = discountStrategy;

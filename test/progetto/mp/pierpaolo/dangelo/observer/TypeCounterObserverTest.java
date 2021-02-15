@@ -48,5 +48,4 @@ public class TypeCounterObserverTest {
     kitproduct.addProduct(new BaseProduct(2, "Prodotto2", ProductType.TYPE2, 10.00));
     assertThat(observer.getStorico()).hasSize(currentSize);
   }
-
 }

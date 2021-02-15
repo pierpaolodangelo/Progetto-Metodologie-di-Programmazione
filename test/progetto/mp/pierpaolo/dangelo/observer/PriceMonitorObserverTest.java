@@ -30,9 +30,9 @@ public class PriceMonitorObserverTest {
 
   @Test
   public void noChangeTest() {
-    double previousAvaragePrice = observer.getAvaragePrice();
+    double previousAvaragePrice = observer.getAveragePrice();
     product.setPrice(10.00);
-    assertThat(previousAvaragePrice).isEqualTo(observer.getAvaragePrice());
+    assertThat(previousAvaragePrice).isEqualTo(observer.getAveragePrice());
   }
 
   @Test
