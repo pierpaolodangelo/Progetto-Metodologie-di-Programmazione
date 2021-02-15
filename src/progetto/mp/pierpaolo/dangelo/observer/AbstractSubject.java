@@ -20,6 +20,11 @@ public abstract class AbstractSubject {
     observers.remove(observer);
   }
 
+  //TODO AGGIUNGI TEST
+  public void removeAllIObserver(Iterator<IObserver> observers) {
+    observers.forEachRemaining(this::removeIObserver);
+  }
+
   public void notifyObservers() {
     observers.forEach(IObserver::update);
   }
